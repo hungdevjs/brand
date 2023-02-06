@@ -1,0 +1,10 @@
+[
+  { "name": "JavaScript", "icon": "/images/skills/javascript.png" },
+  { "name": "React.js", "icon": "/images/skills/react.png" },
+  { "name": "Vue.js", "icon": "/images/skills/vue.png" },
+  { "name": "Node.js", "icon": "/images/skills/node.png" },
+  { "name": ".NET", "icon": "/images/skills/dotnet.png" },
+  { "name": "Web3", "icon": "/images/skills/web3.png" },
+  { "name": "Docker", "icon": "/images/skills/docker.png" },
+  { "name": "Google Cloud Platform", "icon": "/images/skills/google.png" }
+]

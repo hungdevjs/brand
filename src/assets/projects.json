@@ -1,0 +1,194 @@
+[
+  {
+    "name": "Dance school",
+    "description": "BASE32.se is a famous dance school in Stockholm, Sweden, and belongs to the government. They have used an access database file to manage students, classes for over 20 years. I and my teammates helped them to manage more easily by creating a management system with an admin dashboard and mobile application.",
+    "time": "2020",
+    "images": [
+      "/images/projects/DanceSchool1.webp",
+      "/images/projects/DanceSchool2.webp",
+      "/images/projects/DanceSchool3.webp",
+      "/images/projects/DanceSchool4.webp"
+    ],
+    "role": "Developer",
+    "numberOfMembers": 4,
+    "techStack": [
+      "React.js",
+      "React Native",
+      ".NET core",
+      "SQL Server",
+      "Docker"
+    ],
+    "features": [
+      "Staffs, teachers, students, parents management",
+      "Courses, programs, assessments, schedules, reports,... management",
+      "Real-time chatting between users",
+      "Microsoft Outlook, Fortnox API, Google Drive, Amazon AWS integrated",
+      "Multi-tenant supported",
+      "Multi-language supported",
+      "Have both web app and mobile app"
+    ],
+    "urls": ["https://base23.se"]
+  },
+  {
+    "name": "Online assessment",
+    "description": "Our goal is to create a new system to handle premium online testing for students and to support as many interactive, complex question types as possible. Students can register online and buy test packs suitable to their grade. Once they bought a test pack, they can perform all tests in it online at anytime convenient to them. I and my teammates built 2 web apps for this project, 1 for question player and the other for admin dashboard to manage stuffs",
+    "time": "2020",
+    "images": [
+      "/images/projects/OAS1.webp",
+      "/images/projects/OAS2.webp",
+      "/images/projects/OAS3.webp",
+      "/images/projects/OAS4.webp",
+      "/images/projects/OAS5.webp",
+      "/images/projects/OAS6.webp"
+    ],
+    "role": "Developer",
+    "numberOfMembers": 3,
+    "techStack": ["React.js", ".NET core", "Docker"],
+    "features": [
+      "Students management",
+      "Questions, assessments, test packs, test suites,... management",
+      "Test marking",
+      "Test suites buying",
+      "Player for many different question types: single/multiple choice, fill in blank, drag drop"
+    ]
+  },
+  {
+    "name": "Miles at Sea",
+    "description": "Miles at Sea is a GPS tracking app that allows seafarers to track and document their experience at sea, and automatically build a digital logbook of their voyages. The app is available in Apple App Store and Google Play Store.",
+    "time": "2020",
+    "images": [
+      "/images/projects/MilesAtSea1.webp",
+      "/images/projects/MilesAtSea3.webp",
+      "/images/projects/MilesAtSea3.webp",
+      "/images/projects/MilesAtSea4.webp"
+    ],
+    "role": "Developer",
+    "numberOfMembers": 3,
+    "techStack": [
+      "React Native",
+      "Firebase Authentication",
+      "Firebase Cloud Firestore"
+    ],
+    "features": [
+      "Boat management",
+      "Real-time tracking location and save voyage to database",
+      "Voyage statistics"
+    ],
+    "urls": ["https://milesatsea.com"]
+  },
+  {
+    "name": "Mario Framework",
+    "description": "Mario Framework is a platform to help students with disabilities reach their potential in the classroom. It also connects educators and give them a professional growth.",
+    "time": "2021",
+    "images": ["/images/projects/Mario1.png"],
+    "role": "Team lead",
+    "numberOfMembers": 6,
+    "techStack": [
+      "React.js",
+      ".NET core",
+      "SQL Server",
+      "Firebase Cloud Firestore",
+      "Docker"
+    ],
+    "features": [
+      "Staffs, teachers, students, parents management",
+      "Real-time chatting between users",
+      "Courses, programs, assessments, schedules, reports,... management",
+      "Real-time exam marking",
+      "Admin dashboard"
+    ],
+    "urls": ["https://marioframework.com"]
+  },
+  {
+    "name": "DayOne",
+    "description": "DayOne is my company's product. It helps to create functional teams, clear communications and good workflows for F & B stores.",
+    "time": "2021-2022",
+    "images": ["/images/projects/DayOne.svg"],
+    "videos": [
+      "https://res.cloudinary.com/wearedayone/video/upload/v1644490402/Feature%20videos/announce_ytb5gd.mov",
+      "https://res.cloudinary.com/wearedayone/video/upload/v1644490271/Feature%20videos/knowledge_m2xa8a.mov",
+      "https://res.cloudinary.com/wearedayone/video/upload/v1644490264/Feature%20videos/responsbility_eirbxh.mov",
+      "https://res.cloudinary.com/wearedayone/video/upload/v1644490261/Feature%20videos/repository_h1d3oy.mov"
+    ],
+    "role": "Developer",
+    "numberOfMembers": 5,
+    "techStack": [
+      "React.js",
+      "React Native",
+      "Node.js",
+      "Firebase Authentication",
+      "Firebase Cloud Firestore",
+      "Firebase Cloud Function",
+      "Google Cloud App Engine"
+    ],
+    "features": [
+      "Workspaces, teams, tasks, FAQs, users,...  management",
+      "Announcement management",
+      "Realtime chatting",
+      "Payment with Stripe integrated",
+      "Have both web app and mobile app"
+    ],
+    "urls": ["https://weareday.one"]
+  },
+  {
+    "name": "MIRL",
+    "description": "MIRL (Made In Real Life) is the industry’s first decentralized fashion brand in the metaverse. My company DayOne cooperated with MIRL and ByBit to create MIRL ecosystem. The ecosystem includes several websites with web3 technology to mint NFTs, check NFT rarity, voting, buy clothes from MIRL,...",
+    "time": "2022",
+    "images": ["/images/projects/MIRL1.png"],
+    "role": "Developer",
+    "numberOfMembers": 5,
+    "techStack": [
+      "React.js",
+      "Web3",
+      "Solidity",
+      "Node.js",
+      "Firebase Authentication",
+      "Firebase Cloud Firestore",
+      "Firebase Cloud Function"
+    ],
+    "features": [
+      "Web3 authentication",
+      "NFT minting & NFT generation & NFT listing on Opensea",
+      "Whitelisted validation",
+      "Voting power based on token balance"
+    ],
+    "urls": [
+      "https://mirl.club",
+      "https://nft.mirl.club",
+      "https://rarity.mirl.club",
+      "https://vote.mirl.club",
+      "https://shop.mirl.club",
+      "https://airdrop.mirl.club"
+    ]
+  },
+  {
+    "name": "Mailrats",
+    "description": "Mailrats is a powerful web3 messaging tool to connect people through wallet addresses. People can also earn money from replying their inboxes",
+    "time": "2022",
+    "images": [
+      "/images/projects/Mailrats0.png",
+      "/images/projects/Mailrats1.png",
+      "/images/projects/Mailrats2.png",
+      "/images/projects/Mailrats3.png"
+    ],
+    "role": "Developer",
+    "numberOfMembers": 3,
+    "techStack": [
+      "React.js",
+      "Web3",
+      "Solidity",
+      "Node.js",
+      "Firebase Authentication",
+      "Firebase Cloud Firestore",
+      "Firebase Cloud Function"
+    ],
+    "features": [
+      "Web3 authentication",
+      "Messaging people through wallet addresses",
+      "Image, videos uploading",
+      "Message charging",
+      "Balance withdrawing"
+    ],
+    "urls": ["https://mailrats.co"]
+  }
+]
