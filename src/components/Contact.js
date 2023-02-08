@@ -1,15 +1,61 @@
+import { useState } from 'react';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 import { Box, Typography, Grid, TextField, Button } from '@mui/material';
+import { grey } from '@mui/material/colors';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 import useResponsive from '@/hooks/useResponsive';
+import useMessage from '@/hooks/useMessage';
+
+const validationSchema = yup.object({
+  email: yup
+    .string()
+    .email('Email is invalid')
+    .required('Please enter your email'),
+  message: yup.string().required('Please enter your message'),
+});
+
+const initialValues = {
+  email: '',
+  message: '',
+};
 
 const Contact = () => {
   const { isMobile } = useResponsive();
+  const { sendMessage } = useMessage();
+  const [isSent, setIsSent] = useState(false);
+
+  const onSubmit = async (values) => {
+    setSubmitting(true);
+    try {
+      await sendMessage(values);
+      setIsSent(true);
+    } catch (err) {
+      console.error(err);
+    }
+    setSubmitting(false);
+  };
+
+  const {
+    values,
+    touched,
+    errors,
+    isSubmitting,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    setSubmitting,
+  } = useFormik({
+    validationSchema,
+    initialValues,
+    onSubmit,
+  });
 
   return (
-    <Box>
+    <Box id="contact">
       <Box
         display="flex"
         flexDirection="column"
@@ -120,33 +166,88 @@ const Contact = () => {
               </Box>
             </Grid>
             <Grid item xs={12} md={7}>
-              <Box px={2} py={4} display="flex" flexDirection="column" gap={2}>
-                <TextField
-                  variant="standard"
-                  label="Your email"
-                  placeholder="Your email"
-                />
-                <TextField
-                  multiline
-                  rows={3}
-                  variant="standard"
-                  label="Message"
-                  placeholder="Write your message..."
-                />
-                <Button
-                  variant="contained"
-                  color="primary"
-                  sx={{
-                    alignSelf: 'flex-end',
-                    fontSize: 12,
-                    textTransform: 'none',
-                    boxShadow: 'none',
-                    '&:hover': { boxShadow: 'none' },
-                  }}
+              {isSent ? (
+                <Box
+                  height="100%"
+                  px={2}
+                  py={4}
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
                 >
-                  Send message
-                </Button>
-              </Box>
+                  <Typography fontSize={20}>
+                    Thank you for sending me message!
+                  </Typography>
+                  <Typography fontSize={12} color={grey[500]}>
+                    I will get back to you within 24 hours.
+                  </Typography>
+                </Box>
+              ) : (
+                <Box
+                  px={2}
+                  py={4}
+                  display="flex"
+                  flexDirection="column"
+                  gap={2}
+                >
+                  <Box>
+                    <TextField
+                      fullWidth
+                      variant="standard"
+                      label="Your email"
+                      placeholder="Your email"
+                      name="email"
+                      value={values.email}
+                      onChange={handleChange}
+                      onBlur={handleBlur('email')}
+                    />
+                    <Box height="1rem">
+                      {touched.email && errors.email && (
+                        <Typography color="tomato" fontSize={12}>
+                          {errors.email}
+                        </Typography>
+                      )}
+                    </Box>
+                  </Box>
+                  <Box>
+                    <TextField
+                      fullWidth
+                      multiline
+                      rows={3}
+                      variant="standard"
+                      label="Message"
+                      placeholder="Write your message..."
+                      name="message"
+                      value={values.message}
+                      onChange={handleChange}
+                      onBlur={handleBlur('message')}
+                    />
+                    <Box height="1rem">
+                      {touched.message && errors.message && (
+                        <Typography color="tomato" fontSize={12}>
+                          {errors.message}
+                        </Typography>
+                      )}
+                    </Box>
+                  </Box>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    sx={{
+                      alignSelf: 'flex-end',
+                      fontSize: 12,
+                      textTransform: 'none',
+                      boxShadow: 'none',
+                      '&:hover': { boxShadow: 'none' },
+                    }}
+                    onClick={handleSubmit}
+                    disabled={isSubmitting}
+                  >
+                    Send message
+                  </Button>
+                </Box>
+              )}
             </Grid>
           </Grid>
         </Box>

@@ -65,6 +65,9 @@ const Introduction = () => {
                 boxShadow: 'none',
                 '&:hover': { boxShadow: 'none' },
               }}
+              onClick={() =>
+                window.open('/pdf/hungdevjs | Fullstack Engineer.pdf')
+              }
             >
               View my resume
             </Button>

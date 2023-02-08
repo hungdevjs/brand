@@ -5,6 +5,7 @@ import { grey } from '@mui/material/colors';
 import MenuIcon from '@mui/icons-material/Menu';
 
 import useResponsive from '@/hooks/useResponsive';
+import scroll from '@/utils/scroll';
 import HeaderMenu from './HeaderMenu';
 
 const navs = [
@@ -69,6 +70,7 @@ const Header = () => {
                   boxShadow: 'none',
                   '&:hover': { boxShadow: 'none' },
                 }}
+                onClick={() => scroll('#contact')}
               >
                 Send me a message
               </Button>

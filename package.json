@@ -18,9 +18,11 @@
     "eslint-config-next": "13.1.6",
     "firebase": "^9.16.0",
     "firebase-admin": "^11.5.0",
+    "formik": "^2.2.9",
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sass": "^1.58.0"
+    "sass": "^1.58.0",
+    "yup": "^0.32.11"
   }
 }
