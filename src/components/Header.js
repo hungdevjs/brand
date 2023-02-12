@@ -16,12 +16,20 @@ const navs = [
 const Header = () => {
   const { pathname, push } = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-  const { isTablet } = useResponsive();
+  const { isMobile } = useResponsive();
+
+  const goToSendMessage = () => {
+    if (pathname !== '/') {
+      push('/').then(() => scroll('#contact'));
+    } else {
+      scroll('#contact');
+    }
+  };
 
   return (
     <Box height="80px" display="flex" alignItems="center">
       <HeaderMenu
-        isOpen={isTablet && isOpen}
+        isOpen={isMobile && isOpen}
         onClose={() => setIsOpen(false)}
       />
       <Container>
@@ -34,25 +42,29 @@ const Header = () => {
           >
             hungdevjs
           </Typography>
-          {isTablet && (
+          {isMobile && (
             <MenuIcon
               sx={{ cursor: 'pointer' }}
               onClick={() => setIsOpen(true)}
             />
           )}
-          {!isTablet && (
+          {!isMobile && (
             <Box display="flex" alignItems="center" gap={3}>
               {navs.map((nav) => (
                 <Typography
                   key={nav.path}
                   fontSize={14}
                   fontWeight={pathname === nav.path ? 600 : 400}
-                  color={pathname === nav.path ? 'black' : grey[800]}
+                  color={pathname === nav.path ? 'black' : grey[600]}
                   sx={{
+                    transition: 'all ease 0.3s',
                     cursor: 'pointer',
                     textUnderlineOffset: '5px',
                     textDecoration:
                       pathname === nav.path ? 'underline' : 'none',
+                    '&:hover': {
+                      color: grey[900],
+                    },
                   }}
                   onClick={() => push(nav.path)}
                 >
@@ -70,7 +82,7 @@ const Header = () => {
                   boxShadow: 'none',
                   '&:hover': { boxShadow: 'none' },
                 }}
-                onClick={() => scroll('#contact')}
+                onClick={goToSendMessage}
               >
                 Send me a message
               </Button>

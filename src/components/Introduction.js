@@ -33,7 +33,7 @@ const Introduction = () => {
             </Typography>
             <Grid mt={1} container spacing={2}>
               {skills.map((skill) => (
-                <Grid item xs={3} sm={1.5}>
+                <Grid key={skill.name} item xs={3} sm={1.5}>
                   <Box
                     width="100%"
                     display="flex"
