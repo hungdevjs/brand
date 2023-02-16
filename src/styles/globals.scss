@@ -13,3 +13,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.tox-notification.tox-notification--in.tox-notification--warning {
+  display: none;
+}

@@ -8,18 +8,31 @@ import ArticleDetail from '@/components/admin/ArticleDetail';
 
 const Admin = () => {
   const { isInitialized, user } = useAdmin();
-  const [option, setOption] = useState('article');
+  const [option, setOption] = useState('article-list');
   const [activeArticleId, setActiveArticleId] = useState(null);
 
   if (!isInitialized) return null;
 
   if (!user) return <Login />;
 
-  if (option === 'article') {
-    if (activeArticleId)
-      return <ArticleDetail back={() => setActiveArticleId(null)} />;
-    return <ArticleList setActiveArticleId={setActiveArticleId} />;
-  }
+  if (option === 'article-detail')
+    return (
+      <ArticleDetail
+        activeArticleId={activeArticleId}
+        back={() => {
+          setActiveArticleId(null);
+          setOption('article-list');
+        }}
+      />
+    );
+
+  if (option === 'article-list')
+    return (
+      <ArticleList
+        setOption={setOption}
+        setActiveArticleId={setActiveArticleId}
+      />
+    );
 
   return (
     <Box p={2} display="flex" flexDirection="column" gap={2}>

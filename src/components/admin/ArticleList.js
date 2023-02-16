@@ -6,7 +6,7 @@ import useAppContext from '@/hooks/useAppContext';
 import usePaginationArticle from '@/hooks/usePaginationArticle';
 import ActionButtons from './ActionButtons';
 
-const ArticleList = ({ setActiveArticleId }) => {
+const ArticleList = ({ setOption, setActiveArticleId }) => {
   const {
     articleState: { articles },
   } = useAppContext();
@@ -34,6 +34,7 @@ const ArticleList = ({ setActiveArticleId }) => {
           <ActionButtons
             onEdit={() => {
               setActiveArticleId(params.id);
+              setOption('article-detail');
             }}
             onRemove={() => setRemoveItem(params.row)}
           />
@@ -50,7 +51,10 @@ const ArticleList = ({ setActiveArticleId }) => {
           variant="contained"
           size="small"
           color="success"
-          onClick={() => setActiveArticleId('new')}
+          onClick={() => {
+            setOption('article-detail');
+            setActiveArticleId(null);
+          }}
         >
           Create
         </Button>
