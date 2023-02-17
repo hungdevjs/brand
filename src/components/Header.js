@@ -51,7 +51,7 @@ const Header = () => {
           )}
           {!isMobile && (
             <Box display="flex" alignItems="center" gap={3}>
-              <LanguageSelector />
+              {pathname !== '/' && <LanguageSelector />}
               {navs.map((nav) => (
                 <Typography
                   key={nav.path}
