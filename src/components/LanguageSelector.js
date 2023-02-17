@@ -72,9 +72,7 @@ const LanguageSelector = () => {
 
   return (
     <FormControlLabel
-      control={
-        <IOSSwitch sx={{ m: 1 }} checked={checked} onChange={onChange} />
-      }
+      control={<IOSSwitch checked={checked} onChange={onChange} />}
     />
   );
 };

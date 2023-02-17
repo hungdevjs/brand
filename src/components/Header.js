@@ -7,6 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import useResponsive from '@/hooks/useResponsive';
 import scroll from '@/utils/scroll';
 import HeaderMenu from './HeaderMenu';
+import LanguageSelector from './LanguageSelector';
 
 const navs = [
   { name: 'Portfolio', path: '/' },
@@ -50,6 +51,7 @@ const Header = () => {
           )}
           {!isMobile && (
             <Box display="flex" alignItems="center" gap={3}>
+              <LanguageSelector />
               {navs.map((nav) => (
                 <Typography
                   key={nav.path}

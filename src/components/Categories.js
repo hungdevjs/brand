@@ -22,7 +22,6 @@ const Categories = () => {
         <Typography
           key={category.id}
           fontSize={14}
-          fontWeight={activeCategoryId === category.id ? 600 : 400}
           color={activeCategoryId === category.id ? 'black' : grey[600]}
           sx={{
             transition: 'all ease 0.3s',

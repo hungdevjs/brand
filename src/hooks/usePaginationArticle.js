@@ -1,18 +1,13 @@
 import { useMemo, useState } from 'react';
 
-import useAppContext from './useAppContext';
-
 const isMatch = (mainString, searchString) =>
   mainString.toLowerCase().includes(searchString.trim().toLowerCase());
 
 const usePaginationArticle = ({ articles, categoryId, search }) => {
-  const {
-    languageState: { language },
-  } = useAppContext();
   const [page, setPage] = useState(0);
-  const [limit, setLimit] = useState(20);
+  const [limit, setLimit] = useState(12);
 
-  const renderedArticles = useMemo(() => {
+  const matchedArticles = useMemo(() => {
     let filteredArticles = articles;
     if (categoryId && categoryId !== '1') {
       filteredArticles = filteredArticles.filter(
@@ -26,12 +21,23 @@ const usePaginationArticle = ({ articles, categoryId, search }) => {
       );
     }
 
+    return filteredArticles;
+  }, [articles, categoryId, search]);
+
+  const renderedArticles = useMemo(() => {
     const start = page * limit;
     const end = (page + 1) * limit;
-    return filteredArticles.slice(start, end);
-  }, [articles, categoryId, search, page, limit, language]);
+    return matchedArticles.slice(start, end);
+  }, [matchedArticles, page, limit]);
 
-  return { renderedArticles, page, limit, setPage, setLimit };
+  return {
+    renderedArticles,
+    page,
+    limit,
+    totalPages: Math.ceil(matchedArticles.length / limit),
+    setPage,
+    setLimit,
+  };
 };
 
 export default usePaginationArticle;

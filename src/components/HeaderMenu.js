@@ -2,6 +2,8 @@ import { useRouter } from 'next/router';
 import { Drawer, Box, Typography, Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
+import LanguageSelector from './LanguageSelector';
+
 const navs = [
   { name: 'Portfolio', path: '/' },
   { name: 'Blog', path: '/blogs' },
@@ -29,6 +31,7 @@ const HeaderMenu = ({ isOpen, onClose }) => {
           <CloseIcon sx={{ cursor: 'pointer' }} onClick={onClose} />
         </Box>
         <Box display="flex" flexDirection="column" gap={5}>
+          <LanguageSelector />
           {navs.map((nav) => (
             <Box
               key={nav.name}

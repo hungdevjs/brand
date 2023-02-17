@@ -75,7 +75,7 @@ const ArticleList = ({ setOption, setActiveArticleId }) => {
           rows={renderedArticles}
           columns={columns}
           rowCount={renderedArticles.length}
-          rowsPerPageOptions={[20, 50]}
+          rowsPerPageOptions={[12, 50]}
           pagination
           page={page}
           pageSize={limit}
