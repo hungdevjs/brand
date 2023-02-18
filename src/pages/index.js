@@ -13,10 +13,8 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>hungdev.js</title>
-        <meta name="description" content="hungdev.js portfolio" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>hungdevjs</title>
+        <meta name="description" content="hungdevjs portfolio" />
       </Head>
       <Layout>
         <Box display="flex" flexDirection="column" gap={isMobile ? 5 : 10}>

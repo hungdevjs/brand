@@ -9,6 +9,9 @@ const theme = createTheme({
   palette: {
     primary: { main: indigo[500] },
   },
+  typography: {
+    fontFamily: 'Montserrat, Arial, Helvetica, sans-serif',
+  },
 });
 
 export default function App({ Component, pageProps }) {
