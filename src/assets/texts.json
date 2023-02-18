@@ -1,10 +1,14 @@
 {
   "en": {
     "search": "Search",
-    "no_article": "There are no articles."
+    "no_article": "There are no articles.",
+    "english": "English",
+    "vietnamese": "Vietnamese"
   },
   "vi": {
     "search": " Tìm kiếm",
-    "no_article": "Không tìm được bài viết nào."
+    "no_article": "Không tìm được bài viết nào.",
+    "english": "Tiếng Anh",
+    "vietnamese": "Tiếng Việt"
   }
 }

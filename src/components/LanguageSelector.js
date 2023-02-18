@@ -72,6 +72,7 @@ const LanguageSelector = () => {
 
   return (
     <FormControlLabel
+      sx={{ ml: 0.25 }}
       control={<IOSSwitch checked={checked} onChange={onChange} />}
     />
   );
