@@ -6,8 +6,8 @@ const Blog = () => {
   return (
     <>
       <Head>
-        <title>hungdevjs | latest articles</title>
-        <meta name="description" content="hungdevjs latest articles" />
+        <title>hungdevjs | blogs</title>
+        <meta name="description" content="hungdevjs blogs" />
       </Head>
       <BlogList />
     </>
