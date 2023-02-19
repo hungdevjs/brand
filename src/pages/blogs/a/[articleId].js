@@ -25,6 +25,39 @@ const Article = ({ article }) => {
       <Head>
         <title>hungdevjs | {article.enTitle}</title>
         <meta name="description" content={`hungdevjs | ${article.enTitle}`} />
+
+        {/* Schema.org markup for Google */}
+        <meta itemprop="name" content={article.enTitle} />
+        <meta
+          itemprop="description"
+          content={`hungdevjs | ${article.enTitle}`}
+        />
+        <meta itemprop="image" content={article.attachments[0].url} />
+
+        {/* Twitter Card data */}
+        <meta name="twitter:card" content="article" />
+        <meta name="twitter:site" content="https://hungdevjs.web.app" />
+        <meta name="twitter:title" content={article.enTitle} />
+        <meta
+          name="twitter:description"
+          content={`hungdevjs | ${article.enTitle}`}
+        />
+        <meta name="twitter:creator" content="hungdevjs" />
+        <meta name="twitter:image" content={article.attachments[0].url} />
+
+        {/* Open Graph data */}
+        <meta property="og:title" content={article.enTitle} />
+        <meta property="og:type" content="article" />
+        <meta
+          property="og:url"
+          content={`https://hungdevjs.web.app/blogs/a/${article.id}`}
+        />
+        <meta property="og:image" content={article.attachments[0].url} />
+        <meta
+          property="og:description"
+          content={`hungdevjs | ${article.enTitle}`}
+        />
+        <meta property="og:site_name" content="hungdevjs.web.app" />
       </Head>
       <Layout>
         <Container>
