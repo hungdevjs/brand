@@ -12,20 +12,14 @@ import Layout from '@/components/Layout';
 import Categories from '@/components/Categories';
 import ArticleItem from './ArticleItem';
 
-const BlogList = () => {
-  const {
-    query: { categoryId },
-  } = useRouter();
+const BlogList = ({ articles, categories }) => {
   const { isMobile } = useResponsive();
   const {
-    categoryState: { categories },
-    articleState: { articles },
     languageState: { language },
   } = useAppContext();
   const [search, setSearch] = useState('');
   const { renderedArticles, page, setPage, totalPages } = usePaginationArticle({
     articles,
-    categoryId,
     search,
   });
 
@@ -48,7 +42,7 @@ const BlogList = () => {
           justifyContent="space-between"
           gap={2}
         >
-          <Categories />
+          <Categories categories={categories} />
           <Box
             display="flex"
             alignItems="center"

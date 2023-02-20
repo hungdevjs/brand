@@ -2,14 +2,10 @@ import { useState } from 'react';
 import { Box, TextField, Typography, Button } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 
-import useAppContext from '@/hooks/useAppContext';
 import usePaginationArticle from '@/hooks/usePaginationArticle';
 import ActionButtons from './ActionButtons';
 
-const ArticleList = ({ setOption, setActiveArticleId }) => {
-  const {
-    articleState: { articles },
-  } = useAppContext();
+const ArticleList = ({ articles, setOption, setActiveArticleId }) => {
   const [search, setSearch] = useState('');
   const { renderedArticles, page, limit, setPage, setLimit } =
     usePaginationArticle({ articles, search });

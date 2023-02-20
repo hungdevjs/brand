@@ -14,11 +14,8 @@ import Layout from '@/components/Layout';
 const Article = ({ article }) => {
   const { push } = useRouter();
   const {
-    categoryState: { categories },
     languageState: { language },
   } = useAppContext();
-
-  const category = categories.find((item) => item.id === article.categoryId);
 
   return (
     <>
@@ -69,7 +66,7 @@ const Article = ({ article }) => {
               alignItems="center"
               gap={2}
               sx={{ cursor: 'pointer' }}
-              onClick={() => push(`/blogs/c/${category?.id}`)}
+              onClick={() => push(`/blogs/c/${article.category?.id}`)}
             >
               <ArrowBackIcon />
               <Typography>{texts[language].back_to_article_list}</Typography>
@@ -95,7 +92,7 @@ const Article = ({ article }) => {
                 }}
                 onClick={() => push(`/blogs/c/${article.categoryId}`)}
               >
-                {category?.[language === 'en' ? 'enName' : 'viName']}
+                {article.category?.[language === 'en' ? 'enName' : 'viName']}
               </Typography>
               •
               <Typography fontSize="13px" color={grey[500]}>
@@ -151,10 +148,22 @@ export const getServerSideProps = async ({ params, res }) => {
     .collection('articles')
     .doc(articleId)
     .get();
+
   const article = {
     id: doc.id,
     ...doc.data(),
     createdAt: moment(doc.data().createdAt.toDate()).format('DD/MM/YYYY'),
+  };
+
+  const categoryDoc = await admin
+    .firestore()
+    .collection('categories')
+    .doc(article.categoryId)
+    .get();
+
+  article.category = {
+    id: categoryDoc.id,
+    ...categoryDoc.data(),
   };
 
   return {

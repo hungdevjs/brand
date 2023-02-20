@@ -1,9 +1,10 @@
 import Head from 'next/head';
+import moment from 'moment';
 
 import BlogList from '@/components/BlogList';
 import admin from '@/configs/admin.config';
 
-const BlogCategory = ({ category }) => {
+const BlogCategory = ({ articles, categories, category }) => {
   return (
     <>
       <Head>
@@ -54,7 +55,7 @@ const BlogCategory = ({ category }) => {
         />
         <meta property="og:site_name" content="hungdevjs.web.app" />
       </Head>
-      <BlogList />
+      <BlogList articles={articles} categories={categories} />
     </>
   );
 };
@@ -68,14 +69,31 @@ export const getServerSideProps = async ({ params, res }) => {
   );
 
   const { categoryId } = params;
-  const doc = await admin
+  const articleSnapshot = await admin
+    .firestore()
+    .collection('articles')
+    .where('categoryId', '==', categoryId)
+    .orderBy('createdAt', 'desc')
+    .get();
+  const articles = articleSnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+    createdAt: moment(doc.data().createdAt.toDate()).format('DD/MM/YYYY'),
+  }));
+
+  const categorySnapshot = await admin
     .firestore()
     .collection('categories')
-    .doc(categoryId)
+    .orderBy('order', 'asc')
     .get();
-  const category = { id: doc.id, ...doc.data() };
+  const categories = categorySnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+
+  const category = categories.find((item) => item.id === categoryId);
 
   return {
-    props: { category },
+    props: { articles, categories, category },
   };
 };

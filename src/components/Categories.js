@@ -4,14 +4,13 @@ import { grey } from '@mui/material/colors';
 
 import useAppContext from '@/hooks/useAppContext';
 
-const Categories = () => {
+const Categories = ({ categories }) => {
   const {
     push,
     query: { categoryId },
   } = useRouter();
   const {
     languageState: { language },
-    categoryState: { categories },
   } = useAppContext();
 
   const activeCategoryId = categoryId || '1';

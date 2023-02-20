@@ -12,16 +12,15 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { Editor } from '@tinymce/tinymce-react';
 
-import useAppContext from '@/hooks/useAppContext';
-import useAdmin from '@/hooks/useAdmin';
-
-const ArticleDetail = ({ activeArticleId, back }) => {
-  const {
-    articleState: { articles },
-    categoryState: { categories },
-  } = useAppContext();
-  const { createArticle, updateArticle, uploadFile } = useAdmin();
-
+const ArticleDetail = ({
+  articles,
+  categories,
+  createArticle,
+  updateArticle,
+  uploadFile,
+  activeArticleId,
+  back,
+}) => {
   const inputId = useId();
   const labelRef = useRef();
   const [isLoading, setIsLoading] = useState(false);

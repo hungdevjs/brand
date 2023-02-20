@@ -7,7 +7,15 @@ import ArticleList from '@/components/admin/ArticleList';
 import ArticleDetail from '@/components/admin/ArticleDetail';
 
 const Admin = () => {
-  const { isInitialized, user } = useAdmin();
+  const {
+    isInitialized,
+    user,
+    articles,
+    categories,
+    createArticle,
+    updateArticle,
+    uploadFile,
+  } = useAdmin();
   const [option, setOption] = useState('article-list');
   const [activeArticleId, setActiveArticleId] = useState(null);
 
@@ -18,6 +26,11 @@ const Admin = () => {
   if (option === 'article-detail')
     return (
       <ArticleDetail
+        articles={articles}
+        categories={categories}
+        createArticle={createArticle}
+        updateArticle={updateArticle}
+        uploadFile={uploadFile}
         activeArticleId={activeArticleId}
         back={() => {
           setActiveArticleId(null);
@@ -29,6 +42,7 @@ const Admin = () => {
   if (option === 'article-list')
     return (
       <ArticleList
+        articles={articles}
         setOption={setOption}
         setActiveArticleId={setActiveArticleId}
       />
@@ -42,3 +56,16 @@ const Admin = () => {
 };
 
 export default Admin;
+
+export const getServerSideProps = async ({ res }) => {
+  const environment = process.env.NODE_ENV;
+
+  if (environment === 'production') {
+    res.writeHead(301, { Location: '/' });
+    res.end();
+
+    return { props: {} };
+  }
+
+  return { props: {} };
+};

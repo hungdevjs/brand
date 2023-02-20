@@ -1,10 +1,9 @@
 import { useRouter } from 'next/router';
 import { Box, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
-import moment from 'moment';
+import { stripHtml } from 'string-strip-html';
 
 import useAppContext from '@/hooks/useAppContext';
-import removeHtml from '@/utils/removeHtml';
 
 const ArticleItem = ({ article }) => {
   const { push } = useRouter();
@@ -41,7 +40,7 @@ const ArticleItem = ({ article }) => {
         </Typography>
         •
         <Typography fontSize="13px" color={grey[500]}>
-          {moment(article.createdAt.toDate()).format('DD/MM/YYYY')}
+          {article.createdAt}
         </Typography>
       </Box>
       <Typography
@@ -76,7 +75,10 @@ const ArticleItem = ({ article }) => {
           overflow: 'hidden',
         }}
       >
-        {removeHtml(language === 'en' ? article.enContent : article.viContent)}
+        {
+          stripHtml(language === 'en' ? article.enContent : article.viContent)
+            .result
+        }
       </Typography>
     </Box>
   );

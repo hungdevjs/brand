@@ -3,17 +3,12 @@ import { useMemo, useState } from 'react';
 const isMatch = (mainString, searchString) =>
   mainString.toLowerCase().includes(searchString.trim().toLowerCase());
 
-const usePaginationArticle = ({ articles, categoryId, search }) => {
+const usePaginationArticle = ({ articles, search }) => {
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(12);
 
   const matchedArticles = useMemo(() => {
     let filteredArticles = articles;
-    if (categoryId && categoryId !== '1') {
-      filteredArticles = filteredArticles.filter(
-        (item) => item.categoryId === categoryId
-      );
-    }
 
     if (search) {
       filteredArticles = filteredArticles.filter(
@@ -22,7 +17,7 @@ const usePaginationArticle = ({ articles, categoryId, search }) => {
     }
 
     return filteredArticles;
-  }, [articles, categoryId, search]);
+  }, [articles, search]);
 
   const renderedArticles = useMemo(() => {
     const start = page * limit;

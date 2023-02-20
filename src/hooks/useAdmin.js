@@ -11,10 +11,14 @@ import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 import { v4 } from 'uuid';
 
 import { auth, firestore, storage } from '@/configs/firebase.config';
+import useArticle from './useArticle';
+import useCategory from './useCategory';
 
 const useAdmin = () => {
   const [isInitialized, setIsInitialized] = useState(false);
   const [user, setUser] = useState(null);
+  const { articles } = useArticle();
+  const { categories } = useCategory();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
@@ -51,6 +55,8 @@ const useAdmin = () => {
   return {
     isInitialized,
     user,
+    articles,
+    categories,
     login,
     createArticle,
     updateArticle,
