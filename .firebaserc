@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "personal-brand-b19ef"
+  },
+  "targets": {
+    "personal-brand-b19ef": {
+      "hosting": {
+        "default": [
+          "hungdevjs"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

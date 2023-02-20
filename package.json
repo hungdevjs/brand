@@ -2,11 +2,17 @@
   "name": "brand",
   "version": "0.1.0",
   "private": true,
+  "main": "./server.js",
+  "engines": {
+    "node": "16"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy-functions": "firebase use personal-brand-b19ef && yarn build && firebase deploy --only functions",
+    "deploy-web": "yarn deploy-functions && firebase deploy --only hosting:default"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",

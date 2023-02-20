@@ -217,7 +217,7 @@ const ArticleDetail = ({ activeArticleId, back }) => {
             </Button>
             <Box display="flex" flexDirection="column" gap={2}>
               {data.attachments.map((item) => (
-                <Box display="flex" alignItems="center" gap={1}>
+                <Box key={item.url} display="flex" alignItems="center" gap={1}>
                   <img
                     src={item.url}
                     alt="attachment"

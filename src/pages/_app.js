@@ -4,6 +4,7 @@ import { indigo } from '@mui/material/colors';
 import '@/styles/globals.scss';
 
 import { AppContextProvider } from '@/contexts/app.context';
+import Loading from '@/components/Loading';
 
 const theme = createTheme({
   palette: {
@@ -19,6 +20,7 @@ export default function App({ Component, pageProps }) {
     <ThemeProvider theme={theme}>
       <AppContextProvider>
         <Component {...pageProps} />
+        <Loading />
       </AppContextProvider>
     </ThemeProvider>
   );

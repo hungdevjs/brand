@@ -18,7 +18,7 @@ const Introduction = () => {
             justifyContent="center"
           >
             <Typography variant={isMobile ? 'h6' : 'h3'} fontWeight={600}>
-              Hello, I'm Hung,
+              {"Hello, I'm Hung,"}
             </Typography>
             <Typography
               variant={isMobile ? 'h6' : 'h3'}
