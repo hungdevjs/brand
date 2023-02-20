@@ -1,7 +1,7 @@
 [
   {
     "name": "Dance school",
-    "description": "BASE32.se is a famous dance school in Stockholm, Sweden, and belongs to the government. They have used an access database file to manage students, classes for over 20 years. I and my teammates helped them to manage more easily by creating a management system with an admin dashboard and mobile application.",
+    "description": "BASE23.se is a famous dance school in Stockholm, Sweden, and belongs to the government. They have used an access database file to manage students, classes for over 20 years. I and my teammates helped them to manage more easily by creating a management system with an admin dashboard and mobile application.",
     "time": "2020",
     "images": [
       "/images/projects/DanceSchool1.webp",
