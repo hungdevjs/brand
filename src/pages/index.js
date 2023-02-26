@@ -19,9 +19,9 @@ const Home = () => {
         <title>hungdevjs | portfolio</title>
         <meta name="description" content="Fullstack engineer" />
         {/* Schema.org markup for Google */}
-        <meta itemprop="name" content="hungdevjs | portfolio" />
-        <meta itemprop="description" content="Fullstack engineer" />
-        <meta itemprop="image" content={image} />
+        <meta itemProp="name" content="hungdevjs | portfolio" />
+        <meta itemProp="description" content="Fullstack engineer" />
+        <meta itemProp="image" content={image} />
 
         {/* Twitter Card data */}
         <meta name="twitter:card" content="article" />

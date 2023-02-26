@@ -14,9 +14,9 @@ const Blog = ({ articles, categories }) => {
         <title>hungdevjs | blogs</title>
         <meta name="description" content="hungdevjs | blogs" />
         {/* Schema.org markup for Google */}
-        <meta itemprop="name" content="hungdevjs | blogs" />
-        <meta itemprop="description" content="hungdevjs | blogs" />
-        <meta itemprop="image" content={image} />
+        <meta itemProp="name" content="hungdevjs | blogs" />
+        <meta itemProp="description" content="hungdevjs | blogs" />
+        <meta itemProp="image" content={image} />
 
         {/* Twitter Card data */}
         <meta name="twitter:card" content="article" />

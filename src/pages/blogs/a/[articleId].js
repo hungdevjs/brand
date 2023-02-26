@@ -5,11 +5,24 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { grey } from '@mui/material/colors';
 import moment from 'moment';
 import parse from 'html-react-parser';
+import { stripHtml } from 'string-strip-html';
 
 import useAppContext from '@/hooks/useAppContext';
 import admin from '@/configs/admin.config';
 import texts from '@/assets/texts.json';
 import Layout from '@/components/Layout';
+
+const getMetaDescription = (html) => {
+  const rawContent = stripHtml(html).result;
+  const words = rawContent.split(' ');
+  let description = '';
+  let i = 0;
+  while (description.length < 100 && i < words.length) {
+    description += words[i];
+    i++;
+  }
+  return description;
+};
 
 const Article = ({ article }) => {
   const { push } = useRouter();
@@ -21,15 +34,18 @@ const Article = ({ article }) => {
     <>
       <Head>
         <title>hungdevjs | {article.enTitle}</title>
-        <meta name="description" content={`hungdevjs | ${article.enTitle}`} />
+        <meta
+          name="description"
+          content={getMetaDescription(article.enContent)}
+        />
 
         {/* Schema.org markup for Google */}
-        <meta itemprop="name" content={article.enTitle} />
+        <meta itemProp="name" content={article.enTitle} />
         <meta
-          itemprop="description"
-          content={`hungdevjs | ${article.enTitle}`}
+          itemProp="description"
+          content={getMetaDescription(article.enContent)}
         />
-        <meta itemprop="image" content={article.attachments[0].url} />
+        <meta itemProp="image" content={article.attachments[0].url} />
 
         {/* Twitter Card data */}
         <meta name="twitter:card" content="article" />
@@ -37,7 +53,7 @@ const Article = ({ article }) => {
         <meta name="twitter:title" content={article.enTitle} />
         <meta
           name="twitter:description"
-          content={`hungdevjs | ${article.enTitle}`}
+          content={getMetaDescription(article.enContent)}
         />
         <meta name="twitter:creator" content="hungdevjs" />
         <meta name="twitter:image" content={article.attachments[0].url} />
@@ -52,7 +68,7 @@ const Article = ({ article }) => {
         <meta property="og:image" content={article.attachments[0].url} />
         <meta
           property="og:description"
-          content={`hungdevjs | ${article.enTitle}`}
+          content={getMetaDescription(article.enContent)}
         />
         <meta property="og:site_name" content="hungdevjs.web.app" />
       </Head>

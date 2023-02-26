@@ -15,14 +15,14 @@ const BlogCategory = ({ articles, categories, category }) => {
         />
         {/* Schema.org markup for Google */}
         <meta
-          itemprop="name"
+          itemProp="name"
           content={`hungdevjs | ${category.enName} articles`}
         />
         <meta
-          itemprop="description"
+          itemProp="description"
           content={`hungdevjs | ${category.enName} articles`}
         />
-        <meta itemprop="image" content={category.image} />
+        <meta itemProp="image" content={category.image} />
 
         {/* Twitter Card data */}
         <meta name="twitter:card" content="article" />
