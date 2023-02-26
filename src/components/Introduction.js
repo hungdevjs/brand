@@ -84,7 +84,7 @@ const Introduction = () => {
             justifyContent="center"
           >
             <img
-              src="/images/avatar.png"
+              src="/images/avatar.jpeg"
               style={{
                 width: '100%',
                 borderRadius: 8,
