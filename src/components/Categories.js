@@ -16,7 +16,7 @@ const Categories = ({ categories }) => {
   const activeCategoryId = categoryId || '1';
 
   return (
-    <Box display="flex" alignItems="center" gap={2}>
+    <Box display="flex" alignItems="center" gap={2} flexWrap="wrap">
       {categories.map((category) => (
         <Typography
           key={category.id}
