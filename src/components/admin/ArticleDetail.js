@@ -44,7 +44,6 @@ const ArticleDetail = ({
   const activeArticle = articles.find((item) => item.id === activeArticleId);
 
   const save = async () => {
-    console.log(data);
     setIsLoading(true);
     if (activeArticleId) {
       await updateArticle(activeArticleId, data);
@@ -59,7 +58,7 @@ const ArticleDetail = ({
     try {
       const file = e.target.files[0];
       const { storageRef, url } = await uploadFile(file);
-      changeData({ attachments: [{ storageRef, url }, ...data.attachments] });
+      changeData({ attachments: [...data.attachments, { storageRef, url }] });
     } catch (err) {
       console.error(err);
     }
