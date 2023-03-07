@@ -41,12 +41,7 @@ const Blog = ({ articles, categories }) => {
 
 export default Blog;
 
-export const getServerSideProps = async ({ params, res }) => {
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=60, stale-while-revalidate=180'
-  );
-
+export const getStaticProps = async () => {
   const articleSnapshot = await admin
     .firestore()
     .collection('articles')

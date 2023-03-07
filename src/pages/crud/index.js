@@ -57,16 +57,13 @@ const Admin = () => {
 
 export default Admin;
 
-export const getServerSideProps = async ({ res }) => {
-  const environment = process.env.NODE_ENV;
-  console.log({ environment });
+// export const getStaticProps = async () => {
+//   const environment = process.env.NODE_ENV;
+//   console.log({ environment });
 
-  if (environment === 'production') {
-    res.writeHead(301, { Location: '/' });
-    res.end();
+//   if (environment === 'production') {
+//     return { redirect: { destination: '/', permanent: true } };
+//   }
 
-    return { props: {} };
-  }
-
-  return { props: {} };
-};
+//   return { props: {} };
+// };

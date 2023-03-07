@@ -2,17 +2,13 @@
   "name": "brand",
   "version": "0.1.0",
   "private": true,
-  "main": "./server.js",
-  "engines": {
-    "node": "16"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "export": "next export",
     "lint": "next lint",
-    "deploy-functions": "firebase use personal-brand-b19ef && yarn build && firebase deploy --only functions",
-    "deploy-web": "yarn deploy-functions && firebase deploy --only hosting:default"
+    "deploy": "yarn run build && yarn run export && firebase deploy --only hosting:default"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -26,7 +22,6 @@
     "eslint-config-next": "13.1.6",
     "firebase": "^9.16.0",
     "firebase-admin": "^11.5.0",
-    "firebase-functions": "^4.2.1",
     "formik": "^2.2.9",
     "html-react-parser": "^3.0.9",
     "moment": "^2.29.4",

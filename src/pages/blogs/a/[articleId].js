@@ -148,12 +148,20 @@ const Article = ({ article }) => {
 
 export default Article;
 
-export const getServerSideProps = async ({ params, res }) => {
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=60, stale-while-revalidate=180'
-  );
+export const getStaticPaths = async () => {
+  const articleSnapshot = await admin
+    .firestore()
+    .collection('articles')
+    .orderBy('createdAt', 'desc')
+    .get();
 
+  const articleIds = articleSnapshot.docs.map((doc) => doc.id);
+  const paths = articleIds.map((articleId) => ({ params: { articleId } }));
+
+  return { paths, fallback: false };
+};
+
+export const getStaticProps = async ({ params }) => {
   const { articleId } = params;
   const doc = await admin
     .firestore()

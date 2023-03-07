@@ -62,13 +62,22 @@ const BlogCategory = ({ articles, categories, category }) => {
 
 export default BlogCategory;
 
-export const getServerSideProps = async ({ params, res }) => {
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=60, stale-while-revalidate=180'
-  );
+export const getStaticPaths = async () => {
+  const categorySnapshot = await admin
+    .firestore()
+    .collection('categories')
+    .orderBy('order', 'asc')
+    .get();
 
+  const categoryIds = categorySnapshot.docs.map((doc) => doc.id);
+  const paths = categoryIds.map((categoryId) => ({ params: { categoryId } }));
+
+  return { paths, fallback: false };
+};
+
+export const getStaticProps = async ({ params }) => {
   const { categoryId } = params;
+
   const articleSnapshot = await admin
     .firestore()
     .collection('articles')
