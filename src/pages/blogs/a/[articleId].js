@@ -120,10 +120,7 @@ const Article = ({ article }) => {
               alt="banner"
               style={{
                 width: '100%',
-                aspectRatio: '3/2',
                 borderRadius: '4px',
-                objectFit: 'cover',
-                objectPosition: 'center',
                 cursor: 'pointer',
               }}
               onClick={() => push(`/blogs/a/${article.id}`)}
@@ -131,9 +128,8 @@ const Article = ({ article }) => {
             <Box
               sx={{
                 '& img': {
-                  maxWidth: '100%',
-                  maxHeight: 300,
-                  objectFit: 'cover',
+                  width: '100%',
+                  height: 'auto',
                   borderRadius: 1,
                 },
                 '& p': {
