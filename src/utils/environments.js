@@ -6,6 +6,8 @@ const environments = {
   FIREBASE_MESSAGING_SENDER_ID:
     process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   FIREBASE_APP_ID: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  ENABLE_MULTI_LANGUAGE:
+    process.env.NEXT_PUBLIC_ENABLE_MULTI_LANGUAGE === 'true',
 };
 
 export default environments;

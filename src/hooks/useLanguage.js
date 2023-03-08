@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const useLanguage = () => {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState('vi');
 
   return { language, setLanguage };
 };

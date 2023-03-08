@@ -6,6 +6,9 @@ import { grey } from '@mui/material/colors';
 
 import useAppContext from '@/hooks/useAppContext';
 import texts from '@/assets/texts.json';
+import environments from '@/utils/environments';
+
+const { ENABLE_MULTI_LANGUAGE } = environments;
 
 const navs = [
   { name: 'Portfolio', path: '/' },
@@ -75,66 +78,70 @@ const HeaderMenu = ({ isOpen, onClose }) => {
               <Typography fontWeight={400}>{nav.name}</Typography>
             </Box>
           ))}
-          <Box
-            p={2}
-            display="flex"
-            alignItems="center"
-            gap={2}
-            sx={{
-              cursor: 'pointer',
-              transition: 'all ease 0.3s',
-              '&:hover': {
-                bgcolor: grey[200],
-              },
-            }}
-            onClick={() => setIsOpenLanguage(!isOpenLanguage)}
-          >
-            <Typography fontWeight={400}>Change blog language</Typography>
-            <img
-              src={
-                language === 'en'
-                  ? '/images/languages/en.png'
-                  : '/images/languages/vi.png'
-              }
-              alt="language"
-            />
-          </Box>
-          <Box px={2}>
-            <Collapse in={isOpenLanguage}>
-              <Box display="flex" flexDirection="column">
-                <Box
-                  p={2}
-                  display="flex"
-                  alignItems="center"
-                  gap={2}
-                  sx={{ cursor: 'pointer' }}
-                  onClick={() => {
-                    setLanguage('en');
-                  }}
-                >
-                  <Typography fontWeight={language === 'en' ? 700 : 400}>
-                    {texts[language].english}
-                  </Typography>
-                  <img src="/images/languages/en.png" alt="english" />
-                </Box>
-                <Box
-                  p={2}
-                  display="flex"
-                  alignItems="center"
-                  gap={2}
-                  sx={{ cursor: 'pointer' }}
-                  onClick={() => {
-                    setLanguage('vi');
-                  }}
-                >
-                  <Typography fontWeight={language === 'vi' ? 700 : 400}>
-                    {texts[language].vietnamese}
-                  </Typography>
-                  <img src="/images/languages/vi.png" alt="vietnamese " />
-                </Box>
+          {ENABLE_MULTI_LANGUAGE && (
+            <>
+              <Box
+                p={2}
+                display="flex"
+                alignItems="center"
+                gap={2}
+                sx={{
+                  cursor: 'pointer',
+                  transition: 'all ease 0.3s',
+                  '&:hover': {
+                    bgcolor: grey[200],
+                  },
+                }}
+                onClick={() => setIsOpenLanguage(!isOpenLanguage)}
+              >
+                <Typography fontWeight={400}>Change blog language</Typography>
+                <img
+                  src={
+                    language === 'en'
+                      ? '/images/languages/en.png'
+                      : '/images/languages/vi.png'
+                  }
+                  alt="language"
+                />
               </Box>
-            </Collapse>
-          </Box>
+              <Box px={2}>
+                <Collapse in={isOpenLanguage}>
+                  <Box display="flex" flexDirection="column">
+                    <Box
+                      p={2}
+                      display="flex"
+                      alignItems="center"
+                      gap={2}
+                      sx={{ cursor: 'pointer' }}
+                      onClick={() => {
+                        setLanguage('en');
+                      }}
+                    >
+                      <Typography fontWeight={language === 'en' ? 700 : 400}>
+                        {texts[language].english}
+                      </Typography>
+                      <img src="/images/languages/en.png" alt="english" />
+                    </Box>
+                    <Box
+                      p={2}
+                      display="flex"
+                      alignItems="center"
+                      gap={2}
+                      sx={{ cursor: 'pointer' }}
+                      onClick={() => {
+                        setLanguage('vi');
+                      }}
+                    >
+                      <Typography fontWeight={language === 'vi' ? 700 : 400}>
+                        {texts[language].vietnamese}
+                      </Typography>
+                      <img src="/images/languages/vi.png" alt="vietnamese " />
+                    </Box>
+                  </Box>
+                </Collapse>
+              </Box>
+            </>
+          )}
         </Box>
       </Box>
     </Drawer>

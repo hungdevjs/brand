@@ -10,7 +10,26 @@ import {
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import { Editor } from '@tinymce/tinymce-react';
+
+import 'react-quill/dist/quill.snow.css';
+let ReactQuill;
+if (typeof window !== 'undefined') {
+  ReactQuill = require('react-quill');
+}
+
+const formatContent = (html) => {
+  const images = html.match(/\[\[.*\]\]/g);
+
+  if (!images) return html;
+
+  let result = html;
+  for (const image of images) {
+    const src = image.slice(2, image.length - 2);
+    result = result.replace(image, `<img src="${src}" alt="" />`);
+  }
+
+  return result;
+};
 
 const ArticleDetail = ({
   articles,
@@ -85,8 +104,8 @@ const ArticleDetail = ({
   return (
     <Box p={2} display="flex" flexDirection="column" gap={2}>
       <Box display="flex" alignItems="center" gap={2}>
-        <IconButton>
-          <ArrowBackIcon onClick={back} />
+        <IconButton onClick={back}>
+          <ArrowBackIcon />
         </IconButton>
         <Typography variant="h5">
           {!!activeArticle ? 'Article detail' : 'Create article'}
@@ -130,57 +149,25 @@ const ArticleDetail = ({
             />
             <Box>
               <Typography>enContent</Typography>
-              <Editor
-                value={data.enContent || ''}
-                init={{
-                  height: 500,
-                  menubar: 'insert',
-                  plugins: [
-                    'image',
-                    'advlist autolink lists link image charmap print preview anchor',
-                    'searchreplace visualblocks code fullscreen',
-                    'insertdatetime media table paste code help wordcount',
-                  ],
-                  toolbar:
-                    'image | ' +
-                    'undo redo | formatselect | ' +
-                    'bold italic backcolor | alignleft aligncenter ' +
-                    'alignright alignjustify | bullist numlist outdent indent | ' +
-                    'removeformat | help',
-                  content_style:
-                    'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
-                }}
-                onEditorChange={(content) => {
-                  changeData({ enContent: content });
-                }}
-              />
+              {typeof document !== 'undefined' && (
+                <ReactQuill
+                  theme="snow"
+                  value={data.enContent}
+                  onChange={(value) => changeData({ enContent: value })}
+                />
+              )}
             </Box>
             <Box>
               <Typography>viContent</Typography>
-              <Editor
-                value={data.viContent || ''}
-                init={{
-                  height: 500,
-                  menubar: false,
-                  plugins: [
-                    'image',
-                    'advlist autolink lists link image charmap print preview anchor',
-                    'searchreplace visualblocks code fullscreen',
-                    'insertdatetime media table paste code help wordcount',
-                  ],
-                  toolbar:
-                    'image | ' +
-                    'undo redo | formatselect | ' +
-                    'bold italic backcolor | alignleft aligncenter ' +
-                    'alignright alignjustify | bullist numlist outdent indent | ' +
-                    'removeformat | help',
-                  content_style:
-                    'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
-                }}
-                onEditorChange={(content) => {
-                  changeData({ viContent: content });
-                }}
-              />
+              {typeof document !== 'undefined' && (
+                <ReactQuill
+                  theme="snow"
+                  value={data.viContent}
+                  onChange={(value) =>
+                    changeData({ viContent: formatContent(value) })
+                  }
+                />
+              )}
             </Box>
             <Button
               variant="contained"
@@ -226,10 +213,7 @@ const ArticleDetail = ({
                       objectPosition: 'center',
                     }}
                   />
-                  <IconButton
-                    sx={{ cursor: 'pointer' }}
-                    onClick={() => copy(item.url)}
-                  >
+                  <IconButton onClick={() => copy(`[[${item.url}]]`)}>
                     <ContentCopyIcon />
                   </IconButton>
                 </Box>
