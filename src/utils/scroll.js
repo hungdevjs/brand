@@ -1,7 +1,8 @@
 const scroll = (selector) => {
-  const a = document.createElement('a');
-  a.href = selector;
-  a.click();
+  const element = document.querySelector(selector);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
 };
 
 export default scroll;
