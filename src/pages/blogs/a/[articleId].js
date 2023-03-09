@@ -12,16 +12,15 @@ import admin from '@/configs/admin.config';
 import texts from '@/assets/texts.json';
 import Layout from '@/components/Layout';
 
-const getMetaDescription = (html) => {
-  const rawContent = stripHtml(html).result;
+const getMetaDescription = (rawContent) => {
   const words = rawContent.split(' ');
   let description = '';
   let i = 0;
-  while (description.length < 100 && i < words.length) {
-    description += words[i];
+  while (description.length < 150 && i < words.length) {
+    description += `${words[i]} `;
     i++;
   }
-  return description;
+  return `${description.slice(0, -1)}...`;
 };
 
 const Article = ({ article }) => {
@@ -36,14 +35,20 @@ const Article = ({ article }) => {
         <title>hungdevjs | {article.enTitle || article.viTitle}</title>
         <meta
           name="description"
-          content={getMetaDescription(article.enContent || article.viContent)}
+          content={getMetaDescription(
+            stripHtml(article.enContent).result ||
+              stripHtml(article.viContent).result
+          )}
         />
 
         {/* Schema.org markup for Google */}
         <meta itemProp="name" content={article.enTitle || article.viTitle} />
         <meta
           itemProp="description"
-          content={getMetaDescription(article.enContent || article.viContent)}
+          content={getMetaDescription(
+            stripHtml(article.enContent).result ||
+              stripHtml(article.viContent).result
+          )}
         />
         <meta itemProp="image" content={article.attachments[0].url} />
 
@@ -56,7 +61,10 @@ const Article = ({ article }) => {
         />
         <meta
           name="twitter:description"
-          content={getMetaDescription(article.enContent || article.viContent)}
+          content={getMetaDescription(
+            stripHtml(article.enContent).result ||
+              stripHtml(article.viContent).result
+          )}
         />
         <meta name="twitter:creator" content="hungdevjs" />
         <meta name="twitter:image" content={article.attachments[0].url} />
@@ -74,7 +82,10 @@ const Article = ({ article }) => {
         <meta property="og:image" content={article.attachments[0].url} />
         <meta
           property="og:description"
-          content={getMetaDescription(article.enContent || article.viContent)}
+          content={getMetaDescription(
+            stripHtml(article.enContent).result ||
+              stripHtml(article.viContent).result
+          )}
         />
         <meta property="og:site_name" content="hungdevjs.web.app" />
       </Head>
