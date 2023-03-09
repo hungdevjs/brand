@@ -33,33 +33,39 @@ const Article = ({ article }) => {
   return (
     <>
       <Head>
-        <title>hungdevjs | {article.enTitle}</title>
+        <title>hungdevjs | {article.enTitle || article.viTitle}</title>
         <meta
           name="description"
-          content={getMetaDescription(article.enContent)}
+          content={getMetaDescription(article.enContent || article.viContent)}
         />
 
         {/* Schema.org markup for Google */}
-        <meta itemProp="name" content={article.enTitle} />
+        <meta itemProp="name" content={article.enTitle || article.viTitle} />
         <meta
           itemProp="description"
-          content={getMetaDescription(article.enContent)}
+          content={getMetaDescription(article.enContent || article.viContent)}
         />
         <meta itemProp="image" content={article.attachments[0].url} />
 
         {/* Twitter Card data */}
         <meta name="twitter:card" content="article" />
         <meta name="twitter:site" content="https://hungdevjs.web.app" />
-        <meta name="twitter:title" content={article.enTitle} />
+        <meta
+          name="twitter:title"
+          content={article.enTitle || article.viTitle}
+        />
         <meta
           name="twitter:description"
-          content={getMetaDescription(article.enContent)}
+          content={getMetaDescription(article.enContent || article.viContent)}
         />
         <meta name="twitter:creator" content="hungdevjs" />
         <meta name="twitter:image" content={article.attachments[0].url} />
 
         {/* Open Graph data */}
-        <meta property="og:title" content={article.enTitle} />
+        <meta
+          property="og:title"
+          content={article.enTitle || article.viTitle}
+        />
         <meta property="og:type" content="article" />
         <meta
           property="og:url"
@@ -68,7 +74,7 @@ const Article = ({ article }) => {
         <meta property="og:image" content={article.attachments[0].url} />
         <meta
           property="og:description"
-          content={getMetaDescription(article.enContent)}
+          content={getMetaDescription(article.enContent || article.viContent)}
         />
         <meta property="og:site_name" content="hungdevjs.web.app" />
       </Head>
