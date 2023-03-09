@@ -52,7 +52,8 @@ const ArticleDetail = ({
     attachments: [],
   });
 
-  const changeData = (values) => setData({ ...data, ...values });
+  const changeData = (values) =>
+    setData((oldData) => ({ ...oldData, ...values }));
 
   const categoryOptions = categories
     .filter((item) => item.id !== '1')
@@ -61,6 +62,8 @@ const ArticleDetail = ({
       label: category.enName,
     }));
   const activeArticle = articles.find((item) => item.id === activeArticleId);
+
+  console.log({ activeArticle, categoryOptions, data });
 
   const save = async () => {
     setIsLoading(true);

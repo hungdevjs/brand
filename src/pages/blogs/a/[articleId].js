@@ -128,8 +128,9 @@ const Article = ({ article }) => {
             <Box
               sx={{
                 '& img': {
-                  width: '100%',
-                  height: 'auto',
+                  maxWidth: '100%',
+                  margin: '0 auto',
+                  display: 'block',
                   borderRadius: 1,
                 },
                 '& p': {
