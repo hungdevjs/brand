@@ -190,5 +190,27 @@
       "Balance withdrawing"
     ],
     "urls": ["https://mailrats.co"]
+  },
+  {
+    "name": "VoiceGift",
+    "description": "VoiceGift helps people to create a digital gift that includes text, background image, background music and voice record.",
+    "time": "2023",
+    "images": [
+      "/images/projects/VoiceGift1.png",
+      "/images/projects/VoiceGift2.png",
+      "/images/projects/VoiceGift3.png",
+      "/images/projects/VoiceGift4.png"
+    ],
+    "role": "Developer",
+    "numberOfMembers": 3,
+    "techStack": [
+      "React.js",
+      "Node.js",
+      "Firebase Cloud Firestore",
+      "Firebase Cloud Storage",
+      "Firebase Cloud Function"
+    ],
+    "features": ["Create digital gifts", "Upload avatar", "Add voice record"],
+    "urls": ["https://voicegift.web.app"]
   }
 ]
