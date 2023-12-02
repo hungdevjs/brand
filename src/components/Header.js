@@ -14,7 +14,7 @@ const { ENABLE_MULTI_LANGUAGE } = environments;
 
 const navs = [
   { name: 'Portfolio', path: '/' },
-  { name: 'Blog', path: '/blogs' },
+  // { name: 'Blog', path: '/blogs' },
 ];
 
 const Header = () => {
